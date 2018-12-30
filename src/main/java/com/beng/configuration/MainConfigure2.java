@@ -1,11 +1,14 @@
 package com.beng.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
+import com.beng.condition.MyCondition;
 import com.beng.model.Person;
 
+//@Conditional({ MyCondition.class })
 @Configuration
 public class MainConfigure2 {
 
@@ -24,6 +27,20 @@ public class MainConfigure2 {
     public Person person() {
         System.out.println("给容器添加 Person...");
         return new Person("Jane", 20);
+    }
+
+    /*
+     * @Conditional({Condition}) 按照一定的条件进行判断，满足条件注册bean
+     */
+    @Bean("bill")
+    @Conditional({ MyCondition.class })
+    public Person person1() {
+        return new Person("James", 33);
+    }
+
+    @Bean("linus")
+    public Person person2() {
+        return new Person("Linux", 48);
     }
 
 }

@@ -23,6 +23,8 @@ public class IocTest {
     @Test
     public void test2() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfigure2.class);
+
+        System.out.println("Ioc 容器创建完成...");
         String[] beans = context.getBeanDefinitionNames();
         for (String name : beans) {
             System.out.println(name);

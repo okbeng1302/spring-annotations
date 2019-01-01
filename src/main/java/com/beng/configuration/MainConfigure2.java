@@ -3,13 +3,29 @@ package com.beng.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
 
 import com.beng.condition.MyCondition;
+import com.beng.condition.MyImportselector;
+import com.beng.condition.MyImprtBeanDefinitionRegistrar;
+import com.beng.model.Color;
 import com.beng.model.Person;
 
+/*
+ * 给容器注册组件：
+ * 1) 包扫描 + 注解标注注解( @Controller @Service @Component @Repository)
+ * 2) @Bean 注入
+ * 3) @Import 注入
+ *    @ImportSelector : 返回需要导入的组件的全类名数组
+ *    @ImprtBeanDefinitionRegistrar
+ */
 //@Conditional({ MyCondition.class })
 @Configuration
+@Import({ Color.class, MyImportselector.class, MyImprtBeanDefinitionRegistrar.class }) // 快速的导入组件
+                                                                                       // ,id
+                                                                                       // 默认是
+                                                                                       // 全名
 public class MainConfigure2 {
 
     // scope 作用域

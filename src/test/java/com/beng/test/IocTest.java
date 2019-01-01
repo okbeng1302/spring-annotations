@@ -8,9 +8,23 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 import com.beng.configuration.BeanConfiguration;
 import com.beng.configuration.MainConfigure2;
+import com.beng.model.Blue;
 import com.beng.model.Person;
 
 public class IocTest {
+    private static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+            MainConfigure2.class);
+
+    @Test
+    public void testImport() {
+        String[] beans = context.getBeanDefinitionNames();
+
+        Blue blue = context.getBean(Blue.class);
+        System.out.println(blue);
+        for (String name : beans) {
+            System.out.println(name);
+        }
+    }
 
     // @Test
     public void test() {
@@ -39,7 +53,7 @@ public class IocTest {
         System.out.println(person == person1);
     }
 
-    @Test
+    // @Test
     public void test3() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfigure2.class);
         System.out.println("Ioc 容器创建完成...");

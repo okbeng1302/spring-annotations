@@ -27,6 +27,8 @@ import com.beng.model.Car;
  *  2） 通过 Bean 实现 InitailizingBean（定义初始化逻辑）
  *                   DesposableBean（定义销毁逻辑）
  * 
+ *  3） 使用注解 @PostConstruct Bean 创建完成，并且赋值完成
+ *             @PreDestroy Bean 销毁之前调用
  */
 @ComponentScan("com.beng.model")
 @Configuration

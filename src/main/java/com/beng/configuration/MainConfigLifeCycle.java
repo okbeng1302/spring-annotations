@@ -29,6 +29,11 @@ import com.beng.model.Car;
  * 
  *  3） 使用注解 @PostConstruct Bean 创建完成，并且赋值完成
  *             @PreDestroy Bean 销毁之前调用
+ *             
+ *  4） BeanPostProcessor【interface】: bean 的后置处理器
+ *     在 bean 的初始化前后做一些处理工作
+ *     postProcessBeforeInitialization : 在 bean 的初始化之前
+ *     postProcessAfterInitailization : 在初始化之后
  */
 @ComponentScan("com.beng.model")
 @Configuration

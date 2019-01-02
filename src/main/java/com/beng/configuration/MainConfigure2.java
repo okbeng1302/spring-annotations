@@ -10,6 +10,7 @@ import com.beng.condition.MyCondition;
 import com.beng.condition.MyImportselector;
 import com.beng.condition.MyImprtBeanDefinitionRegistrar;
 import com.beng.model.Color;
+import com.beng.model.ColorFactoryBean;
 import com.beng.model.Person;
 
 /*
@@ -19,6 +20,10 @@ import com.beng.model.Person;
  * 3) @Import 注入
  *    @ImportSelector : 返回需要导入的组件的全类名数组
  *    @ImprtBeanDefinitionRegistrar
+ * 4) @FactoryBean 使用工厂bean
+ *    默认获取工厂 bean getObject()创建的对象
+ *    要获取工厂本身 需在 bean 前边加前缀 &
+ *    
  */
 //@Conditional({ MyCondition.class })
 @Configuration
@@ -59,4 +64,8 @@ public class MainConfigure2 {
         return new Person("Linux", 48);
     }
 
+    @Bean
+    public ColorFactoryBean colorFactoryBean() {
+        return new ColorFactoryBean();
+    }
 }

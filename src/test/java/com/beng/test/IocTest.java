@@ -24,6 +24,9 @@ public class IocTest {
         for (String name : beans) {
             System.out.println(name);
         }
+
+        Object bean = context.getBean("colorFactoryBean");
+        System.out.println(bean.getClass());
     }
 
     // @Test

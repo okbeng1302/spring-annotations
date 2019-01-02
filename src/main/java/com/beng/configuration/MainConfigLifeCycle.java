@@ -1,8 +1,8 @@
 package com.beng.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import com.beng.model.Car;
 
@@ -23,13 +23,16 @@ import com.beng.model.Car;
  *   
  *  1） 指定初始化和销毁方法
  *      initMethod   destroyMethod
- *      
+ *  
+ *  2） 通过 Bean 实现 InitailizingBean（定义初始化逻辑）
+ *                   DesposableBean（定义销毁逻辑）
  * 
  */
+@ComponentScan("com.beng.model")
 @Configuration
 public class MainConfigLifeCycle {
 
-    @Scope("prototype")
+    // @Scope("prototype")
     @Bean(initMethod = "init", destroyMethod = "destroy")
     public Car car() {
         return new Car();

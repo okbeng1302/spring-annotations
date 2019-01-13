@@ -66,6 +66,16 @@ import com.beng.aop.MathComputor;
  *              1. 创建bean的实例
  *              2. populateBean 给bean的各种属性赋值 
  *              3. initializeBean : 初始化 Bean
+ *              4. BeanPostProcessor(AnnotationAwareAspectJAutoProxyCreator)
+ *          g. 把 BeanPostProcessor 注册到 BeanFactory 中
+ *              beanFactory.addBeanPostProcessor(postProcessor)
+ * ===========================以上就是创建和注册AnnotationAwareAspectJAutoProxyCreator的过程====================
+ *      3. finishBeanFactoryInitialization(beanFactory) 完成BeanFactory的初始化工作，创建剩下的单实例
+ *          1) 遍历获取容器中的 Bean，依次创建对象 getBean(beanName)
+ *              getBean() -> doGetBean() -> getSingleton() -> 
+ *          2) 创建bean
+ *              a. 先从缓存中获取当前bean，如果能得到，说明bean是之前被创建过的，直接使用，否则再创建，只要创建好的bean都会被缓存起来
+ *              b. createBean() 创建 Bean
  */
 
 // 开启基于注解的aop模式

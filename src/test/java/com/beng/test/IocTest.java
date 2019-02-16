@@ -40,7 +40,7 @@ public class IocTest {
         }
     }
 
-    // @Test
+    @Test
     public void test2() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfigure2.class);
 
@@ -50,10 +50,10 @@ public class IocTest {
             System.out.println(name);
         }
         // 默认单实例
-        Person person = (Person) context.getBean("person");
-        Person person1 = (Person) context.getBean("person");
+        // Person person = (Person) context.getBean("person");
+        // Person person1 = (Person) context.getBean("person");
 
-        System.out.println(person == person1);
+        // System.out.println(person == person1);
     }
 
     // @Test

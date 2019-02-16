@@ -1,12 +1,9 @@
 package com.beng.configuration;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Lazy;
 
-import com.beng.condition.MyCondition;
 import com.beng.condition.MyImportselector;
 import com.beng.condition.MyImprtBeanDefinitionRegistrar;
 import com.beng.model.Color;
@@ -43,7 +40,7 @@ public class MainConfigure2 {
     // 单实例的bean，ioc容器启动的时候创建对象；
     // 懒加载，ioc容器启动时不创建对象，第一次使用（获取）bean 创建对象，并初始化
     @Bean
-    @Lazy
+    // @Lazy
     // @Scope("prototype")
     public Person person() {
         System.out.println("给容器添加 Person...");
@@ -53,15 +50,30 @@ public class MainConfigure2 {
     /*
      * @Conditional({Condition}) 按照一定的条件进行判断，满足条件注册bean
      */
-    @Bean("bill")
-    @Conditional({ MyCondition.class })
-    public Person person1() {
-        return new Person("James", 33);
+    // @Bean("bill")
+    // @Conditional({ MyCondition.class })
+    // public Person person1() {
+    // return new Person("James", 33);
+    // }
+    //
+    // @Bean("linus")
+    // public Person person2() {
+    // return new Person("Linux", 48);
+    // }
+    //
+    // @Bean("unix")
+    // public Person person3() {
+    // return new Person("Linux", 48);
+    // }
+
+    @Bean
+    public Person person4() {
+        return new Person();
     }
 
-    @Bean("linus")
-    public Person person2() {
-        return new Person("Linux", 48);
+    @Bean
+    public Person person5() {
+        return new Person();
     }
 
     @Bean
